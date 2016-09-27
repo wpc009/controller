@@ -10,9 +10,9 @@
 ###
 # Required Sub-modules
 #
-AddModule ( Scan ISSILed )
+#AddModule ( Scan ISSILed )
 AddModule ( Scan MatrixARM )
-AddModule ( Scan STLcd )
+#AddModule ( Scan STLcd )
 AddModule ( Scan UARTConnect )
 
 

@@ -27,9 +27,11 @@
 // Project Includes
 #include <cli.h>
 #include <connect_scan.h>
-#include <lcd_scan.h>
-#include <led.h>
-#include <led_scan.h>
+
+//#include <lcd_scan.h>
+//#include <led.h>
+//#include <led_scan.h>
+
 #include <print.h>
 #include <matrix_scan.h>
 #include <macro.h>
@@ -59,10 +61,10 @@ inline void Scan_setup()
 	Matrix_setup();
 
 	// Setup ISSI chip to control the leds
-	LED_setup();
+//	LED_setup();
 
 	// Setup the ST/NHD lcd display
-	LCD_setup();
+//	LCD_setup();
 
 	// Reset scan count
 	Scan_scanCount = 0;
@@ -79,10 +81,10 @@ inline uint8_t Scan_loop()
 	Connect_scan();
 
 	// Process any LED events
-	LED_scan();
+	//LED_scan();
 
 	// Process any LCD events
-	LCD_scan();
+//	LCD_scan();
 
 	return 0;
 }
@@ -110,7 +112,7 @@ void Scan_currentChange( unsigned int current )
 	// Indicate to all submodules current change
 	Connect_currentChange( current );
 	Matrix_currentChange( current );
-	LED_currentChange( current );
-	LCD_currentChange( current );
+	//LED_currentChange( current );
+	//LCD_currentChange( current );
 }
 
