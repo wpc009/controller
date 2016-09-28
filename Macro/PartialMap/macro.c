@@ -723,18 +723,20 @@ void Macro_appendResultMacroToPendingList( const TriggerMacro *triggerMacro )
 // See Macro_blockUSBKey_capability for more details on usage
 inline void Macro_processKeyBlocking()
 {
+	uint8_t args[] = {0 };
 	// Iterate over list of USB keys
-	for ( uint8_t key = 0; key < Macro_maxBlockCount_define; key++ )
+	for ( uint8_t key = 0; key < macroHidBlockListSize; key++ )
 	{
 		// This capability will always unset (doesn't toggle)
 
 		// First we need to generate the argument
-		uint8_t args[] = { macroHidBlockList[ key ] };
+		args[0] = macroHidBlockList[ key ];
 
 		// XXX Only handles normal keys (no analog, yet)
 		// 0x03 is release, which always unsets a key from the USB buffer, even if it's not there
 		Output_usbCodeSend_capability( 0x03, 0x00, args );
 	}
+	macroHidBlockListSize = 0;
 }
 
 
@@ -784,7 +786,7 @@ inline void Macro_process()
 				{
 				// Re-add to interconnect cache in hold state
 				case 0x01: // Press
-				//case 0x02: // Hold // XXX Why does this not work? -HaaTa
+				case 0x02: // Hold // XXX Why does this not work? -HaaTa
 					macroInterconnectCache[ c ].state = 0x02;
 					macroInterconnectCache[ macroInterconnectCacheSize++ ] = macroInterconnectCache[ c ];
 					break;
