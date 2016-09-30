@@ -153,6 +153,6 @@ cmake_minimum_required( VERSION 2.8 )
 # Module Initialization / Compilation / Targets
 #
 include( modules )
-include( kll ) # Generate kll layouts if necessary
+#include( kll ) # Generate kll layouts if necessary
 include( build )
 

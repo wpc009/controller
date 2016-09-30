@@ -425,6 +425,7 @@ void Output_usbCodeSend_capability( uint8_t state, uint8_t stateType, uint8_t *a
 				printHex(USBKeys_ModifiersManual);
 				print(NL);
 			}
+			//TODO: nothing to do when another ghost key triggered.
 			USBKeys_Modifiers = USBKeys_ModifiersManual;
 			USBKeys_Changed |= USBKeyChangeState_Modifiers;
 		}
